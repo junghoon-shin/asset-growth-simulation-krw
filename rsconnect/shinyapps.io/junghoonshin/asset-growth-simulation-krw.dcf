@@ -1,0 +1,12 @@
+name: asset-growth-simulation-krw
+title: asset-growth-simulation-krw
+username:
+account: junghoonshin
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3558750
+bundleId: 4166944
+url: https://junghoonshin.shinyapps.io/asset-growth-simulation-krw/
+when: 1612183603.47892
+asMultiple: FALSE
+asStatic: FALSE
