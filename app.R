@@ -76,9 +76,9 @@ server = function(input, output, session) {
                      inflation = 1 + input$inflation/100) %>% 
             t %>% 
             as_tibble %>%
-            mutate(`기간` = row_number()) %>%
-            bind_rows(tibble(unadjusted = input$initial/100, adjusted = input$initial/100, `기간` = 0), .) %>%
-            pivot_longer(-`기간`, names_to = "adjustment", values_to = "자산 (억원)") %>%
+            mutate(`기간 (년)` = row_number()) %>%
+            bind_rows(tibble(unadjusted = input$initial/100, adjusted = input$initial/100, `기간 (년)` = 0), .) %>%
+            pivot_longer(-`기간 (년)`, names_to = "adjustment", values_to = "자산 (억원)") %>%
             mutate(adjustment = case_when(adjustment == "unadjusted" ~ "총액",
                                           adjustment == "adjusted" ~ "물가상승률 보정 총액") %>%
                        factor(levels = c("총액", "물가상승률 보정 총액")))
@@ -88,7 +88,7 @@ server = function(input, output, session) {
     
     base_plot = reactive({
         return_simulation() %>% 
-            ggplot(mapping = aes(x = `기간`, y = `자산 (억원)`)) +
+            ggplot(mapping = aes(x = `기간 (년)`, y = `자산 (억원)`)) +
             geom_line(mapping = aes(color = adjustment), size = 1) +
             scale_x_continuous(expand = c(0, 0)) +
             scale_color_brewer(type = "qual", guide = guide_legend(title = NULL)) +
@@ -99,7 +99,7 @@ server = function(input, output, session) {
     output$total_area = renderPlotly({
         ggplotly(base_plot(),
                  height = session$clientData$output_total_area_width/1.4,
-                 tooltip = c("기간", "자산 (억원)")) %>%
+                 tooltip = c("기간 (년)", "자산 (억원)")) %>%
             layout(xaxis = list(title = list(font = list(family = "Lato")), tickfont = list(family = "Lato")),
                    yaxis = list(title = list(font = list(family = "Lato")), tickfont = list(family = "Lato")),
                    legend = list(x = 0.03, y = 0.95, font = list(family = "Lato", size = 14)))
