@@ -98,7 +98,7 @@ server = function(input, output, session) {
     
     output$total_area = renderPlotly({
         ggplotly(base_plot(),
-                 height = session$clientData$output_total_area_width/2,
+                 height = session$clientData$output_total_area_width/1.4,
                  tooltip = c("기간", "자산 (억원)")) %>%
             layout(xaxis = list(title = list(font = list(family = "Lato")), tickfont = list(family = "Lato")),
                    yaxis = list(title = list(font = list(family = "Lato")), tickfont = list(family = "Lato")),
