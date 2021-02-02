@@ -45,8 +45,8 @@ ui = fluidPage(
     
     fluidRow(
         column(6,
-               sliderInput("initial", "초기 투자금액 (백만원)", min = 1, max = 500, value = 20, width = "100%"),
-               sliderInput("monthly", "월 투자금액 (십만원)", min = 1, max = 500, value = 50, width = "100%"),
+               sliderInput("initial", "초기 투자금액 (백만원)", min = 1, max = 200, value = 20, width = "100%"),
+               sliderInput("monthly", "월 투자금액 (십만원)", min = 1, max = 200, value = 50, width = "100%"),
                sliderInput("increment", "연 투자금액 증가율 (%)", min = 0, max = 100, value = 5, width = "100%")
         ),
         column(6, 
