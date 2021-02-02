@@ -100,9 +100,7 @@ server = function(input, output, session) {
         ggplotly(base_plot(),
                  height = session$clientData$output_total_area_width/1.4,
                  tooltip = c("기간 (년)", "자산 (억원)")) %>%
-            layout(xaxis = list(title = list(font = list(family = "Lato")), tickfont = list(family = "Lato")),
-                   yaxis = list(title = list(font = list(family = "Lato")), tickfont = list(family = "Lato")),
-                   legend = list(x = 0.03, y = 0.95, font = list(family = "Lato", size = 14)))
+            layout(legend = list(x = 0.03, y = 0.95, font = list(size = 14)))
     })
 
 }
