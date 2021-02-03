@@ -1,15 +1,20 @@
-library(magrittr)
-library(shiny)
-library(tidyverse)
-library(shinythemes)
 library(grid)
+library(magrittr)
 library(plotly)
-
-# Install font
+library(RColorBrewer)
+library(shiny)
+library(shinythemes)
+library(tidyverse)
 
 # Set ggplot2 theme
 
 theme_set(theme_bw(base_family = "Lato"))
+
+# Define color
+
+qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
+qual_col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals))) %>% unique
+line_color = qual_col_vector[5:6]
 
 # Define functions
 
@@ -89,9 +94,9 @@ server = function(input, output, session) {
     base_plot = reactive({
         return_simulation() %>% 
             ggplot(mapping = aes(x = `기간 (년)`, y = `자산 (억원)`)) +
-            geom_line(mapping = aes(color = adjustment), size = 1) +
+            geom_line(mapping = aes(color = adjustment)) +
             scale_x_continuous(expand = c(0, 0)) +
-            scale_color_brewer(type = "qual", guide = guide_legend(title = NULL)) +
+            scale_color_manual(values = line_color, guide = guide_legend(title = NULL)) +
             theme(legend.key = element_rect(fill = "transparent"), 
                   legend.background = element_rect(fill = "transparent"))
     })
@@ -102,7 +107,6 @@ server = function(input, output, session) {
                  tooltip = c("기간 (년)", "자산 (억원)")) %>%
             layout(legend = list(x = 0.03, y = 0.95, font = list(size = 14)))
     })
-
 }
 
 # Create Shiny app

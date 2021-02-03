@@ -5,8 +5,8 @@ account: junghoonshin
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 3558750
-bundleId: 4167256
+bundleId: 4173803
 url: https://junghoonshin.shinyapps.io/asset-growth-simulation-krw/
-when: 1612189496.36209
+when: 1612320424.95654
 asMultiple: FALSE
 asStatic: FALSE
