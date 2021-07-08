@@ -53,11 +53,11 @@ ui = fluidPage(
     column(6,
            sliderInput("initial", "초기 투자금액 (백만원)", min = 1, max = 200, value = 20, width = "100%"),
            sliderInput("monthly", "월 투자금액 (십만원)", min = 1, max = 200, value = 50, width = "100%"),
-           sliderInput("increment", "연 투자금액 증가율 (%)", min = 0, max = 100, value = 5, width = "100%")
+           sliderInput("increment", "월 투자금액 연간 증가율 (%)", min = 0, max = 100, value = 5, width = "100%")
     ),
     column(6, 
-           sliderInput("profit", "목표수익률 (%)", min = 0, max = 100, value = 20, width = "100%"),
-           sliderInput("inflation", "물가상승률 (%)", min = 0, max = 20, value = 2, width = "100%"),
+           sliderInput("profit", "목표 연수익률 (%)", min = 0, max = 100, value = 20, width = "100%"),
+           sliderInput("inflation", "연간 물가상승률 (%)", min = 0, max = 20, value = 2, width = "100%"),
            sliderInput("duration", "투자기간 (년)", min = 1, max = 50, value = 30, width = "100%")
     )
   ),
